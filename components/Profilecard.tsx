@@ -1,9 +1,13 @@
-export function Home() {
+import { Container } from "@mui/material";
+
+export function Profilecard() {
   return (
     <>
-      <h1>Hello World</h1>
+      <Container fixed >
+        <h1>Hello World</h1>
+      </Container>
     </>
   );
 }
 
-export default Home
+export default Profilecard
