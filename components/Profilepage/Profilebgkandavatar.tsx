@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"
-import {  Container   } from "@mui/material"
+
 
 export function Profilecard() {
   return (
@@ -16,7 +16,7 @@ export function Profilecard() {
       backgroundRepeat: 'no-repeat',
       zIndex:"1",
     }}>
-      
+
     </Box>
   )
 }
