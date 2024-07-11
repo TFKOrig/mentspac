@@ -9,7 +9,9 @@ const Profilebgkandavatar: React.FC = () => {
   const [avatarImage, setAvatarImage] = useState<string | undefined>(
     "/images/avatar.jpg"
   );
-  const [userName, setUserName] = useState<string>("User Name");
+  const [userName, setUserName] = useState<string>("Jhon Doe");
+  const [followers, setFollowers] = useState<number>(120);
+  const [following, setFollowing] = useState<number>(180);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -47,119 +49,167 @@ const Profilebgkandavatar: React.FC = () => {
   };
 
   return (
-    <Grid
-      container
-      sx={{
-        width: "70vw",
-        height: "65vh",
-        margin: "0 auto",
-        backgroundImage: bgImage ? `url(${bgImage})` : "none",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        position: "relative",
-        zIndex: 1,
-      }}
-    >
+    <>
       <Grid
-        item
+        container
         sx={{
-          position: "absolute",
-          top: "84%",
-          left: {
-            xs: "5%",
-            sm: "7%",
-          },
-          zIndex: 2,
+          width: "70vw",
+          height: "65vh",
+          margin: "0 auto",
+          backgroundImage: bgImage ? `url(${bgImage})` : "none",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          position: "relative",
+          zIndex: 1,
         }}
       >
-        <Avatar
-          alt="Avatar"
-          src={avatarImage}
+        <Grid
+          item
+          container
+          direction="row"
+          alignItems="center"
           sx={{
-            width: {
-              xs: "130px",
-              sm: "200px",
+            position: "absolute",
+            top: {
+              xs: "96%",
+              sm: "89%",
+              md: "89%",
             },
-            height: {
-              xs: "130px",
-              sm: "200px",
+            left: {
+              xs: "3%",
+              sm: "4%",
             },
-            border: "2px solid rgba(3, 4, 94, 1)",
-            cursor: "pointer",
-          }}
-          onClick={handleAvatarClick}
-        />
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleAvatarFileChange}
-          style={{ display: "none" }}
-          id="upload-avatar-input"
-        />
-        <Typography
-          variant="h4"
-          sx={{
-            marginTop: "10px",
-            marginLeft: {
-              xs: "0px",
-              sm: "20px",
-            },
-            color: "black",
-            display: "inline-block",
+            zIndex: 2,
           }}
         >
-          {userName}
-        </Typography>
-      </Grid>
-
-      <Grid
-        item
-        sx={{
-          position: "absolute",
-          bottom: "2%",
-          right: { sm: "1%", xs: "2%" },
-          zIndex: 2,
-        }}
-      >
-        <label htmlFor="upload-background-input">
-          <IconButton
-            component="span"
+          <Avatar
+            alt="Avatar"
+            src={avatarImage}
             sx={{
-              color: "black",
-              border: "12px solid rgba(255,80,80,0)",
-              borderRadius: "30px",
-              backgroundColor: "rgba(255, 255, 255, 1)",
-              "&:hover": {
-                backgroundColor: "rgba(255, 255, 255, 0.8)",
+              width: {
+                xs: "70px",
+                sm: "150px",
+                md: "200px",
               },
+              height: {
+                xs: "70px",
+                sm: "150px",
+                md: "200px",
+              },
+              border: "2px solid rgba(3, 4, 94, 1)",
+              cursor: "pointer",
             }}
-          >
-            <PhotoCamera />
-            <Typography
+            onClick={handleAvatarClick}
+          />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleAvatarFileChange}
+            style={{ display: "none" }}
+            id="upload-avatar-input"
+          />
+        </Grid>
+
+        <Grid
+          item
+          sx={{
+            position: "absolute",
+            bottom: "2%",
+            right: { sm: "1%", xs: "2%" },
+            zIndex: 2,
+          }}
+        >
+          <label htmlFor="upload-background-input">
+            <IconButton
+              component="span"
               sx={{
-                marginLeft: "5px",
                 color: "black",
-                display: {
-                  xs: "none",
-                  sm: "block",
+                border: "12px solid rgba(255,80,80,0)",
+                borderRadius: "30px",
+                backgroundColor: "rgba(255, 255, 255, 1)",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.8)",
                 },
               }}
             >
-              Edit Cover
-            </Typography>
-          </IconButton>
-        </label>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleFileChange}
-          style={{ display: "none" }}
-          id="upload-background-input"
-        />
+              <PhotoCamera />
+              <Typography
+                sx={{
+                  marginLeft: "5px",
+                  color: "black",
+                  display: {
+                    xs: "none",
+                    sm: "block",
+                  },
+                }}
+              >
+                Edit Cover
+              </Typography>
+            </IconButton>
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            style={{ display: "none" }}
+            id="upload-background-input"
+          />
+          <Box
+            sx={{
+              display: "flex",
+              margingTop: "1vh",
+              textAlign: "center",
+              marginTop: 2,
+            }}
+          ></Box>
+        </Grid>
       </Grid>
-    </Grid>
+      <Box
+        component="div"
+        sx={{
+          width: "70%",
+          height: "50%",
+          display: "flex",
+          margin: "0 auto",
+          marginTop: "1vh",
+          justifyContent: "space-between",
+        }}
+      >
+        <Box
+         
+          component="div"
+          sx={{ display: "flex", justifyContent: "flex-end", width: "31%" }}
+        >
+          <Typography
+            variant="h4"
+            sx={{
+              fontSize: {
+                xs: "0.8rem",
+                sm: "1.5rem",
+                md: "2rem",
+              },
+              fontWeight: "400",
+              color: "black",
+            }}
+          >
+            {userName}
+          </Typography>
+        </Box>
+        <Box
+          
+          component="div"
+          sx={{ display: "flex",justifyContent: "flex-end", width: "50%" }}
+        >
+          <Typography variant="body1" color="black">
+            {followers} Followers
+          </Typography>
+          <Typography variant="body1" color="black">
+            {following} Following
+          </Typography>
+        </Box>
+      </Box>
+    </>
   );
 };
-
 export default Profilebgkandavatar;
