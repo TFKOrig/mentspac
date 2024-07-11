@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, IconButton, Avatar, Typography } from "@mui/material";
+import { Grid, IconButton, Avatar, Typography } from "@mui/material";
 import { PhotoCamera } from "@mui/icons-material";
 
 const Profilebgkandavatar: React.FC = () => {
@@ -46,9 +46,9 @@ const Profilebgkandavatar: React.FC = () => {
   };
 
   return (
-    <Box
+    <Grid
+      container
       sx={{
-        position: "relative",
         width: "70vw",
         height: "65vh",
         margin: "0 auto",
@@ -56,66 +56,94 @@ const Profilebgkandavatar: React.FC = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        position: "relative",
         zIndex: 1,
       }}
     >
-      <Avatar
-        alt="Avatar"
-        src={avatarImage}
+      <Grid
+        item
         sx={{
-          width: "200px",
-          height: "200px",
-          border: "2px solid rgba(3, 4, 94, 1)",
           position: "absolute",
-          bottom: "-80px",
-          left: "14%",
-          transform: "translateX(-50%)",
-          cursor: "pointer",
+          top: "84%",
+          left: {
+            xs: "5%", // Applies when the screen size is xs (0px and up)
+            sm: "7%", // Applies when the screen size is sm (600px and up)
+          },
           zIndex: 2,
         }}
-        onClick={handleAvatarClick}
-      />
-
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleAvatarFileChange}
-        style={{ display: "none" }}
-        id="upload-avatar-input"
-      />
-
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleFileChange}
-        style={{ display: "none" }}
-        id="upload-background-input"
-      />
-      <label htmlFor="upload-background-input">
-        <IconButton
-          component="span"
+      >
+        <Avatar
+          alt="Avatar"
+          src={avatarImage}
           sx={{
-            height: "2vh",
-            position: "absolute",
-            color: "black",
-            bottom: "10px",
-            right: "10px",
-            border: "12px solid rgba(255,80,80,0)",
-            borderRadius: "30px 30px 30px 30px",
-            zIndex: 2,
-            backgroundColor: "rgba(255, 255, 255, 1)",
-            "&:hover": {
-              backgroundColor: "rgba(255, 255, 255, 0.8)",
+            width: {
+              xs: "130px",
+              sm: "200px",
             },
+            height: {
+              xs: "130px",
+              sm: "200px",
+            },
+            border: "2px solid rgba(3, 4, 94, 1)",
+            cursor: "pointer",
           }}
-        >
-          <PhotoCamera />
-          <Typography sx={{ marginLeft: "5px", color: "black" }}>
-            Edit Cover
-          </Typography>
-        </IconButton>
-      </label>
-    </Box>
+          onClick={handleAvatarClick}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleAvatarFileChange}
+          style={{ display: "none" }}
+          id="upload-avatar-input"
+        />
+      </Grid>
+
+      <Grid
+        item
+        sx={{
+          position: "absolute",
+          bottom: "2%",
+          right: { sm: "1%", xs: "2%" },
+          zIndex: 2,
+        }}
+      >
+        <label htmlFor="upload-background-input">
+          <IconButton
+            component="span"
+            sx={{
+              color: "black",
+              border: "12px solid rgba(255,80,80,0)",
+              borderRadius: "30px",
+              backgroundColor: "rgba(255, 255, 255, 1)",
+              "&:hover": {
+                backgroundColor: "rgba(255, 255, 255, 0.8)",
+              },
+            }}
+          >
+            <PhotoCamera />
+            <Typography
+              sx={{
+                marginLeft: "5px",
+                color: "black",
+                display: {
+                  xs: "none",
+                  sm: "block",
+                },
+              }}
+            >
+              Edit Cover
+            </Typography>
+          </IconButton>
+        </label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+          style={{ display: "none" }}
+          id="upload-background-input"
+        />
+      </Grid>
+    </Grid>
   );
 };
 
