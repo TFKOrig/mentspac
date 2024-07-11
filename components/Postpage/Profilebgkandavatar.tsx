@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box, IconButton, Avatar, Typography } from "@mui/material";
 import { PhotoCamera } from "@mui/icons-material";
-const Profilebgkandavatar: React.FC = () => {
 
+const Profilebgkandavatar: React.FC = () => {
   const [bgImage, setBgImage] = useState<string | undefined>(
     "/images/HDimgback.jpg"
+  );
+  const [avatarImage, setAvatarImage] = useState<string | undefined>(
+    "/images/avatar.jpg"
   );
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,7 +15,31 @@ const Profilebgkandavatar: React.FC = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setBgImage(reader.result as string);
+        if (event.target.id === "upload-background-input") {
+          setBgImage(reader.result as string);
+        } else if (event.target.id === "upload-avatar-input") {
+          setAvatarImage(reader.result as string);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleAvatarClick = () => {
+    const uploadAvatarInput = document.getElementById("upload-avatar-input");
+    if (uploadAvatarInput) {
+      uploadAvatarInput.click();
+    }
+  };
+
+  const handleAvatarFileChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setAvatarImage(reader.result as string);
       };
       reader.readAsDataURL(file);
     }
@@ -21,13 +48,10 @@ const Profilebgkandavatar: React.FC = () => {
   return (
     <Box
       sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        position: "relative",
         width: "70vw",
         height: "65vh",
         margin: "0 auto",
-        position: "relative",
         backgroundImage: bgImage ? `url(${bgImage})` : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -35,14 +59,39 @@ const Profilebgkandavatar: React.FC = () => {
         zIndex: 1,
       }}
     >
+      <Avatar
+        alt="Avatar"
+        src={avatarImage}
+        sx={{
+          width: "200px",
+          height: "200px",
+          border: "2px solid rgba(3, 4, 94, 1)",
+          position: "absolute",
+          bottom: "-80px",
+          left: "14%",
+          transform: "translateX(-50%)",
+          cursor: "pointer",
+          zIndex: 2,
+        }}
+        onClick={handleAvatarClick}
+      />
+
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleAvatarFileChange}
+        style={{ display: "none" }}
+        id="upload-avatar-input"
+      />
+
       <input
         type="file"
         accept="image/*"
         onChange={handleFileChange}
         style={{ display: "none" }}
-        id="upload-image-input"
+        id="upload-background-input"
       />
-      <label htmlFor="upload-image-input">
+      <label htmlFor="upload-background-input">
         <IconButton
           component="span"
           sx={{
@@ -66,11 +115,7 @@ const Profilebgkandavatar: React.FC = () => {
           </Typography>
         </IconButton>
       </label>
-
-          
-
     </Box>
-
   );
 };
 
