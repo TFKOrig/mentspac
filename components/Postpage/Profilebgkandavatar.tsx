@@ -61,44 +61,6 @@ const Profilebgkandavatar: React.FC = () => {
         zIndex: 1,
       }}
     >
-      {/* <Grid
-        item
-        sx={{
-          position: "absolute",
-          top: "84%",
-          left: {
-            xs: "5%", // Applies when the screen size is xs (0px and up)
-            sm: "7%", // Applies when the screen size is sm (600px and up)
-          },
-          zIndex: 2,
-        }}
-      >
-        <Avatar
-          alt="Avatar"
-          src={avatarImage}
-          sx={{
-            width: {
-              xs: "130px",
-              sm: "200px",
-            },
-            height: {
-              xs: "130px",
-              sm: "200px",
-            },
-            border: "2px solid rgba(3, 4, 94, 1)",
-            cursor: "pointer",
-          }}
-          onClick={handleAvatarClick}
-        />
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleAvatarFileChange}
-          style={{ display: "none" }}
-          id="upload-avatar-input"
-        />
-      </Grid> */}
-
       <Grid
         item
         sx={{
