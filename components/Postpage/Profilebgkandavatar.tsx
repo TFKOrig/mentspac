@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, IconButton, Avatar, Typography } from "@mui/material";
+import { Grid, IconButton, Avatar, Typography, Box } from "@mui/material";
 import { PhotoCamera } from "@mui/icons-material";
 
 const Profilebgkandavatar: React.FC = () => {
@@ -9,6 +9,7 @@ const Profilebgkandavatar: React.FC = () => {
   const [avatarImage, setAvatarImage] = useState<string | undefined>(
     "/images/avatar.jpg"
   );
+  const [userName, setUserName] = useState<string>("User Name");
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -60,7 +61,7 @@ const Profilebgkandavatar: React.FC = () => {
         zIndex: 1,
       }}
     >
-      <Grid
+      {/* <Grid
         item
         sx={{
           position: "absolute",
@@ -96,6 +97,58 @@ const Profilebgkandavatar: React.FC = () => {
           style={{ display: "none" }}
           id="upload-avatar-input"
         />
+      </Grid> */}
+
+      <Grid
+        item
+        sx={{
+          position: "absolute",
+          top: "84%",
+          left: {
+            xs: "5%",
+            sm: "7%",
+          },
+          zIndex: 2,
+        }}
+      >
+        <Avatar
+          alt="Avatar"
+          src={avatarImage}
+          sx={{
+            width: {
+              xs: "130px",
+              sm: "200px",
+            },
+            height: {
+              xs: "130px",
+              sm: "200px",
+            },
+            border: "2px solid rgba(3, 4, 94, 1)",
+            cursor: "pointer",
+          }}
+          onClick={handleAvatarClick}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleAvatarFileChange}
+          style={{ display: "none" }}
+          id="upload-avatar-input"
+        />
+        <Typography
+          variant="h4"
+          sx={{
+            marginTop: "10px",
+            marginLeft: {
+              xs: "0px",
+              sm: "20px",
+            },
+            color: "black",
+            display: "inline-block",
+          }}
+        >
+          {userName}
+        </Typography>
       </Grid>
 
       <Grid
