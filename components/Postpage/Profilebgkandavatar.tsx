@@ -177,7 +177,6 @@ const Profilebgkandavatar: React.FC = () => {
         }}
       >
         <Box
-         
           component="div"
           sx={{ display: "flex", justifyContent: "flex-end", width: "31%" }}
         >
@@ -197,14 +196,33 @@ const Profilebgkandavatar: React.FC = () => {
           </Typography>
         </Box>
         <Box
-          
           component="div"
-          sx={{ display: "flex",justifyContent: "flex-end", width: "50%" }}
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            width: "50%",
+          }}
         >
-          <Typography variant="body1" color="black">
+          <Typography
+            variant="body1"
+            color="black"
+            sx={{
+              padding: "0 10px 0 0",
+              fontWeight: "500",
+              fontSize: "1rem",
+            }}
+          >
             {followers} Followers
           </Typography>
-          <Typography variant="body1" color="black">
+          <Typography
+            variant="body1"
+            color="black"
+            sx={{
+              padding: "0 10px 0 0",
+              fontWeight: "500",
+              fontSize: "1rem",
+            }}
+          >
             {following} Following
           </Typography>
         </Box>
