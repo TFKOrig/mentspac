@@ -1,4 +1,5 @@
 import { Box } from "@mui/material"
+import {  Container   } from "@mui/material"
 
 export function Profilecard() {
   return (
@@ -6,15 +7,16 @@ export function Profilecard() {
       display:'flex',
       justifyContent:'center',
       alignItems:'center',
-      Width:'60vw',
-      Height:'60vh',
+      width:'70vw',
+      height:'65vh',
       margin:'0 auto',
       backgroundImage: 'url(/images/HDimgback.jpg)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
+      zIndex:"1",
     }}>
-      <h1>HI</h1>
+      
     </Box>
   )
 }
