@@ -60,14 +60,10 @@ const Postnav: React.FC = () => {
               <Button 
                 color="inherit"
                 sx={{
-                  // width: "7vw",
+                  width: "7vw",
                   backgroundColor: "rgb(207, 247, 255, 1)",
                   borderRadius: "8px",
                   fontSize:"0.6rem",
-                  margin: "0 auto",
-                  marginBottom: "10px",
-                  // width: "85%",
-                  textAlign: "center",
                   "&:hover": {
                     backgroundColor: "rgb(207, 247, 255, 1)",
                   },
@@ -121,25 +117,59 @@ const Postnav: React.FC = () => {
           </Toolbar>
         </AppBar>
       </Box>
-      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}
+      >
         <Box
-          sx={{ width: 250 }}
+          sx={{
+            display:"flex",
+            flexDirection:"column",
+            justifyContent:"flex-start",
+            height:"100vh",
+            width:"22vw",
+            backgroundColor:"rgb(2, 61, 138, 1)",
+          }}
           role="presentation"
           onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
         >
           <List>
-            <ListItem component="button">
+            <ListItem component="button" sx={{
+                  textAlign: "center",
+                  margin: "0 auto",
+                  marginBottom: "10px",
+                  width: "85%",
+                  backgroundColor: "rgb(207, 247, 255, 1)",
+                  borderRadius: "8px",
+                  fontSize:"0.6rem",
+                  }}>
               <ListItemText primary="Posts" />
             </ListItem>
-            <ListItem component="button">
-              <ListItemText primary="Followers" />
+            <ListItem component="button"  sx={{textAlign: "center",                  margin: "0 auto",
+                  marginBottom: "10px",
+                  width: "85%",
+                  backgroundColor: "rgb(207, 247, 255, 1)",
+                  borderRadius: "8px",
+                  fontSize:"0.6rem",
+                  }} >
+              <ListItemText primary="Followers"   />
             </ListItem>
-            <ListItem component="button">
-              <ListItemText primary="Following" />
+            <ListItem component="button" sx={{textAlign: "center",                  margin: "0 auto",
+                  marginBottom: "10px",
+                  width: "85%",
+                  backgroundColor: "rgb(207, 247, 255, 1)",
+                  borderRadius: "8px",
+                  fontSize:"0.6rem",
+                  }}>
+              <ListItemText primary="Following"  />
             </ListItem>
-            <ListItem component="button">
-              <ListItemText primary="Videos" />
+            <ListItem component="button" sx={{textAlign: "center",                  margin: "0 auto",
+                  marginBottom: "10px",
+                  width: "85%",
+                  backgroundColor: "rgb(207, 247, 255, 1)",
+                  borderRadius: "8px",
+                  fontSize:"0.6rem",
+                  }}>
+              <ListItemText primary="Videos"  />
             </ListItem>
           </List>
         </Box>
