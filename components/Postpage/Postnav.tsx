@@ -14,7 +14,7 @@ import React, { useState } from "react";
 
 const Postnav: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [CurrentTab, setTab] = useState(List.index);
+  // const [CurrentTab, setTab] = useState(List.index);
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
@@ -52,18 +52,24 @@ const Postnav: React.FC = () => {
             <Box
               sx={{
                 display: { xs: "none", md: "flex" },
-                gap: 2,
+                gap: 4,
                 color: "black",
+                textAlign: "center",
               }}
             >
-              <Button
+              <Button 
                 color="inherit"
                 sx={{
-                  width: "6vw",
+                  // width: "7vw",
                   backgroundColor: "rgb(207, 247, 255, 1)",
                   borderRadius: "8px",
+                  fontSize:"0.6rem",
+                  margin: "0 auto",
+                  marginBottom: "10px",
+                  // width: "85%",
+                  textAlign: "center",
                   "&:hover": {
-                    backgroundColor: "rgb(207, 247, 255, 1)", // Override hover color
+                    backgroundColor: "rgb(207, 247, 255, 1)",
                   },
                 }}
               >
@@ -72,11 +78,12 @@ const Postnav: React.FC = () => {
               <Button
                 color="inherit"
                 sx={{
-                  width: "6vw",
+                  width: "7vw",
                   backgroundColor: "rgb(207, 247, 255, 1)",
                   borderRadius: "8px",
+                  fontSize:"0.6rem", 
                   "&:hover": {
-                    backgroundColor: "rgb(207, 247, 255, 1)", // Override hover color
+                    backgroundColor: "rgb(207, 247, 255, 1)",
                   },
                 }}
               >
@@ -85,11 +92,12 @@ const Postnav: React.FC = () => {
               <Button
                 color="inherit"
                 sx={{
-                  width: "6vw",
+                  width: "7vw",
                   backgroundColor: "rgb(207, 247, 255, 1)",
+                  fontSize:"0.6rem",
                   borderRadius: "8px",
                   "&:hover": {
-                    backgroundColor: "rgb(207, 247, 255, 1)", // Override hover color
+                    backgroundColor: "rgb(207, 247, 255, 1)", 
                   },
                 }}
               >
@@ -98,11 +106,12 @@ const Postnav: React.FC = () => {
               <Button
                 color="inherit"
                 sx={{
-                  width: "6vw",
+                  width: "7vw",
                   backgroundColor: "rgb(207, 247, 255, 1)",
                   borderRadius: "8px",
+                  fontSize:"0.6rem",
                   "&:hover": {
-                    backgroundColor: "rgb(207, 247, 255, 1)", // Override hover color
+                    backgroundColor: "rgb(207, 247, 255, 1)",
                   },
                 }}
               >
