@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Grid, IconButton, Avatar, Typography, Box } from "@mui/material";
 import { PhotoCamera } from "@mui/icons-material";
-import Postnav from "./Postnav";
 
 const Profilebgkandavatar: React.FC = () => {
   const [bgImage, setBgImage] = useState<string | undefined>(
@@ -228,7 +227,6 @@ const Profilebgkandavatar: React.FC = () => {
           </Typography>
         </Box>
       </Box>
-      <Postnav/>
     </>
   );
 };

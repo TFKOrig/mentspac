@@ -16,9 +16,10 @@ const BioCard: React.FC = () => {
   return (
     <Card
       sx={{
-        maxWidth: 550,
+        maxWidth: 530,
         margin: "0 auto",
         mt: "3vh",
+        ml: "14.7vw",
         backgroundColor: "#0077b6",
         color: "white",
         borderRadius: "20px",
@@ -45,7 +46,7 @@ const BioCard: React.FC = () => {
             paddingRight: "12%",
             // textAlign: "center",
             whiteSpace: "normal",
-            wordBreak: "break-word", // Added to break long words
+            wordBreak: "break-word",
             hyphens: "auto",
             overflow: "hidden",
           }}

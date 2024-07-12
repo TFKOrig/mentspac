@@ -1,4 +1,3 @@
-// pages/_app.tsx
 import React from "react";
 import { AppProps } from "next/app";
 import Profile from "../pages/Profile";

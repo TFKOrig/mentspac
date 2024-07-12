@@ -11,13 +11,24 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from "react";
-
+import PostsComponent from "../Postpage/Biocard";
+import FollowersComponent from "../FollowersNFollowingpage/Followercard";
+import FollowingComponent from "../FollowersNFollowingpage/Followingcard";
+import PhotosComponent from "../PicandVidpage/Photocard";
+import VideosComponent from "../PicandVidpage/Videocard";
 const Postnav: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  // const [CurrentTab, setTab] = useState(List.index);
+  const [currentPage, setCurrentPage] = useState("Posts");
+
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
+
+  const handlePageChange = (pageName: string) => {
+    setCurrentPage(pageName);
+    setDrawerOpen(false); 
+  };
+
   return (
     <>
       <Box
@@ -25,8 +36,9 @@ const Postnav: React.FC = () => {
         sx={{
           display: "flex",
           margin: "0 auto",
-          marginTop: "3vh",
-          width: "50%",
+          marginTop: "12vh",
+          width: "70%",
+          boxSizing: "border-box",
         }}
       >
         <AppBar
@@ -52,64 +64,99 @@ const Postnav: React.FC = () => {
             <Box
               sx={{
                 display: { xs: "none", md: "flex" },
-                gap: 4,
+                gap: 5,
                 color: "black",
                 textAlign: "center",
               }}
             >
-              <Button 
+              <Button
                 color="inherit"
                 sx={{
-                  width: "7vw",
-                  backgroundColor: "rgb(207, 247, 255, 1)",
-                  borderRadius: "8px",
-                  fontSize:"0.6rem",
+                  width: "8vw",
+                  height: "5vh",
+                  backgroundColor:
+                    currentPage === "Posts"
+                      ? "rgba(207, 247, 255, 1)"
+                      : "rgb(207, 247, 255, 1)",
+                  borderRadius: "14px",
+                  fontSize: "0.9rem",
                   "&:hover": {
-                    backgroundColor: "rgb(207, 247, 255, 1)",
+                    backgroundColor: "rgba(207, 247, 255, 1)",
                   },
                 }}
+                onClick={() => handlePageChange("Posts")}
               >
                 Posts
               </Button>
               <Button
                 color="inherit"
                 sx={{
-                  width: "7vw",
-                  backgroundColor: "rgb(207, 247, 255, 1)",
-                  borderRadius: "8px",
-                  fontSize:"0.6rem", 
+                  width: "11vw",
+                  backgroundColor:
+                    currentPage === "Followers"
+                      ? "rgba(207, 247, 255, 1)"
+                      : "rgb(207, 247, 255, 1)",
+                  borderRadius: "14px",
+                  fontSize: "0.9rem",
                   "&:hover": {
-                    backgroundColor: "rgb(207, 247, 255, 1)",
+                    backgroundColor: "rgba(207, 247, 255, 1)",
                   },
                 }}
+                onClick={() => handlePageChange("Followers")}
               >
                 Followers
               </Button>
               <Button
                 color="inherit"
                 sx={{
-                  width: "7vw",
-                  backgroundColor: "rgb(207, 247, 255, 1)",
-                  fontSize:"0.6rem",
-                  borderRadius: "8px",
+                  width: "11vw",
+                  backgroundColor:
+                    currentPage === "Following"
+                      ? "rgba(207, 247, 255, 1)"
+                      : "rgb(207, 247, 255, 1)",
+                  fontSize: "0.9rem",
+                  borderRadius: "14px",
                   "&:hover": {
-                    backgroundColor: "rgb(207, 247, 255, 1)", 
+                    backgroundColor: "rgba(207, 247, 255, 1)",
                   },
                 }}
+                onClick={() => handlePageChange("Following")}
               >
                 Following
               </Button>
               <Button
                 color="inherit"
                 sx={{
-                  width: "7vw",
-                  backgroundColor: "rgb(207, 247, 255, 1)",
-                  borderRadius: "8px",
-                  fontSize:"0.6rem",
+                  width: "11vw",
+                  backgroundColor:
+                    currentPage === "Photos"
+                      ? "rgba(207, 247, 255, 1)"
+                      : "rgb(207, 247, 255, 1)",
+                  borderRadius: "14px",
+                  fontSize: "0.9rem",
                   "&:hover": {
-                    backgroundColor: "rgb(207, 247, 255, 1)",
+                    backgroundColor: "rgba(207, 247, 255, 1)",
                   },
                 }}
+                onClick={() => handlePageChange("Photos")}
+              >
+                Photos
+              </Button>
+              <Button
+                color="inherit"
+                sx={{
+                  width: "11vw",
+                  backgroundColor:
+                    currentPage === "Videos"
+                      ? "rgba(207, 247, 255, 1)"
+                      : "rgb(207, 247, 255, 1)",
+                  borderRadius: "14px",
+                  fontSize: "0.9rem",
+                  "&:hover": {
+                    backgroundColor: "rgba(207, 247, 255, 1)",
+                  },
+                }}
+                onClick={() => handlePageChange("Videos")}
               >
                 Videos
               </Button>
@@ -117,64 +164,58 @@ const Postnav: React.FC = () => {
           </Toolbar>
         </AppBar>
       </Box>
-      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}
-      >
+      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         <Box
           sx={{
-            display:"flex",
-            flexDirection:"column",
-            justifyContent:"flex-start",
-            height:"100vh",
-            width:"22vw",
-            backgroundColor:"rgb(2, 61, 138, 1)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            height: "100vh",
+            width: "32vw",
+            backgroundColor: "rgb(2, 61, 138, 1)",
           }}
           role="presentation"
           onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
         >
           <List>
-            <ListItem component="button" sx={{
-                  textAlign: "center",
-                  margin: "0 auto",
-                  marginBottom: "10px",
-                  width: "85%",
-                  backgroundColor: "rgb(207, 247, 255, 1)",
-                  borderRadius: "8px",
-                  fontSize:"0.6rem",
-                  }}>
-              <ListItemText primary="Posts" />
-            </ListItem>
-            <ListItem component="button"  sx={{textAlign: "center",                  margin: "0 auto",
-                  marginBottom: "10px",
-                  width: "85%",
-                  backgroundColor: "rgb(207, 247, 255, 1)",
-                  borderRadius: "8px",
-                  fontSize:"0.6rem",
-                  }} >
-              <ListItemText primary="Followers"   />
-            </ListItem>
-            <ListItem component="button" sx={{textAlign: "center",                  margin: "0 auto",
-                  marginBottom: "10px",
-                  width: "85%",
-                  backgroundColor: "rgb(207, 247, 255, 1)",
-                  borderRadius: "8px",
-                  fontSize:"0.6rem",
-                  }}>
-              <ListItemText primary="Following"  />
-            </ListItem>
-            <ListItem component="button" sx={{textAlign: "center",                  margin: "0 auto",
-                  marginBottom: "10px",
-                  width: "85%",
-                  backgroundColor: "rgb(207, 247, 255, 1)",
-                  borderRadius: "8px",
-                  fontSize:"0.6rem",
-                  }}>
-              <ListItemText primary="Videos"  />
-            </ListItem>
+            {["Posts", "Followers", "Following", "Photos", "Videos"].map(
+              (text) => (
+                <ListItem
+                  key={text}
+                  component="button"
+                  onClick={() => handlePageChange(text)}
+                  sx={{
+                    textAlign: "center",
+                    margin: "0 auto",
+                    marginBottom: "10px",
+                    width: "85%",
+                    backgroundColor:
+                      currentPage === text
+                        ? "rgba(207, 247, 255, 1)"
+                        : "rgb(207, 247, 255, 1)",
+                    borderRadius: "14px",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  <ListItemText primary={text} />
+                </ListItem>
+              )
+            )}
           </List>
         </Box>
       </Drawer>
+
+      {/* Content Area for Pages */}
+      <Box sx={{ marginTop: "20px", textAlign: "center" }}>
+        {currentPage === "Posts" && <PostsComponent />}
+        {currentPage === "Followers" && <FollowersComponent />}
+        {currentPage === "Following" && <FollowingComponent />}
+        {currentPage === "Photos" && <PhotosComponent />}
+        {currentPage === "Videos" && <VideosComponent />}
+      </Box>
     </>
   );
 };
+
 export default Postnav;
